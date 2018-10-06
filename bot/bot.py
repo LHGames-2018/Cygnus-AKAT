@@ -30,6 +30,12 @@ class Bot:
         print("HOUSE FOUND: " + str(self.PlayerInfo.HouseLocation.x) + "," + str(self.PlayerInfo.HouseLocation.y))
         
         
+        for resource in resources:
+            print("RESOURCE FOUND: " + str(resource.Position.x) + "," + str(resource.Position.y))
+
+            print("HOUSE FOUND: " + str(self.PlayerInfo.HouseLocation.x) + "," + str(self.PlayerInfo.HouseLocation.y))
+
+
             if self.CarryingCapacity > 1000 and self.PlayerInfo.Position.x < self.HouseLocation.Position.x:
                     return create_move_action(Point(1, 0))
 
