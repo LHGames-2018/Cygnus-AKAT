@@ -12,16 +12,9 @@ class Bot:
         """
         self.PlayerInfo = playerInfo
 
-    def execute_turn(self, gameMap, visiblePlayers):
-        """
-        This is where you decide what action to take.
-            :param gameMap: The gamemap.
-            :param visiblePlayers:  The list of visible players.
-        """
-
-        # Write your bot here. Use functions from aiHelper to instantiate your actions.
+    def execute_turn(self, gameMap, visiblePlayers): 
+       return create_move_action(Point(1, 0))
         
-        return create_collect_action(Point(0, -1))
     
 
     def after_turn(self):
