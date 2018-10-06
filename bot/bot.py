@@ -2,7 +2,7 @@ from helper import *
 
 
 class Bot:
-    def __init__(self):
+    def init(self):
         pass
 
     def before_turn(self, playerInfo):
@@ -19,36 +19,23 @@ class Bot:
             :param visiblePlayers:  The list of visible players.
         """
 
-        print(self.PlayerInfo.Position)
         # Write your bot here. Use functions from aiHelper to instantiate your actions.
         resources = gameMap.print()
-
         print("PLAYER POSITION: " + str(self.PlayerInfo.Position.x) + ',' + str(self.PlayerInfo.Position.y))
         for resource in resources:
             print("RESOURCE FOUND: " + str(resource.Position.x) + "," + str(resource.Position.y))
 
-        print("HOUSE FOUND: " + str(self.PlayerInfo.HouseLocation.x) + "," + str(self.PlayerInfo.HouseLocation.y))
-        
-        
-        for resource in resources:
-            print("RESOURCE FOUND: " + str(resource.Position.x) + "," + str(resource.Position.y))
-
             print("HOUSE FOUND: " + str(self.PlayerInfo.HouseLocation.x) + "," + str(self.PlayerInfo.HouseLocation.y))
-
-
-            if self.CarryingCapacity > 1000 and self.PlayerInfo.Position.x < self.HouseLocation.Position.x:
+            if self.PlayerInfo.CarryingCapacity > 1000 and self.PlayerInfo.Position.x < self.PlayerInfo.HouseLocation.Position.x:
                     return create_move_action(Point(1, 0))
 
-            if self.CarryingCapacity > 1000 and self.PlayerInfo.Position.x < self.HouseLocation.Position.x:
-                    return create_move_action(Point(1, 0))
-
-            if self.CarryingCapacity > 1000 and self.PlayerInfo.Position.x > self.HouseLocation.Position.x:
+            if self.PlayerInfo.CarryingCapacity > 1000 and self.PlayerInfo.Position.x > self.PlayerInfo.HouseLocation.Position.x:
                     return create_move_action(Point(-1, 0))
 
-            if self.CarryingCapacity > 1000 and self.PlayerInfo.Position.y > self.HouseLocation.Position.y:
+            if self.PlayerInfo.CarryingCapacity > 1000 and self.PlayerInfo.Position.y > self.PlayerInfo.HouseLocation.Position.y:
                     return create_move_action(Point(0, 1))
 
-            if self.CarryingCapacity > 1000 and self.PlayerInfo.Position.y < self.HouseLocation.Position.y:
+            if self.PlayerInfo.CarryingCapacity > 1000 and self.PlayerInfo.Position.y < self.PlayerInfo.HouseLocation.Position.y:
                     return create_move_action(Point(0, -1))
 
             if self.PlayerInfo.Position.x < resources[0].Position.x:
@@ -58,23 +45,16 @@ class Bot:
                     return create_move_action(Point(-1, 0))
 
             if self.PlayerInfo.Position.y < resources[0].Position.y - 1:
-                    return create_move_action(Point(0, -1))
+                    return create_move_action(Point(0, 1))
 
             if self.PlayerInfo.Position.y > resources[0].Position.y - 1:
-                    return create_move_action(Point(0, 1))
+                    return create_move_action(Point(0, -1))
 
             if self.PlayerInfo.Position.y == resources[0].Position.y-1 and self.PlayerInfo.Position.x == resources[0].Position.x:
                     return create_collect_action(Point(0, 1))
-          
-            
-             
-             
-
-            
 
     def after_turn(self):
-        """
-        Gets called after executeTurn
-        """
-        pass
-
+            """
+            Gets called after executeTurn
+            """
+            pass
