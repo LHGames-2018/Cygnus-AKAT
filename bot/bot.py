@@ -6,6 +6,8 @@ class Bot:
         pass
 
     def before_turn(self, playerInfo):
+        return create_move_action(Point(0, 1))
+        
         """
         Gets called before ExecuteTurn. This is where you get your bot's state.
             :param playerInfo: Your bot's current state.
@@ -13,6 +15,7 @@ class Bot:
         self.PlayerInfo = playerInfo
 
     def execute_turn(self, gameMap, visiblePlayers):
+        
         """
         This is where you decide what action to take.
             :param gameMap: The gamemap.
@@ -20,10 +23,12 @@ class Bot:
         """
 
         # Write your bot here. Use functions from aiHelper to instantiate your actions.
-        return create_move_action(Point(0, -1))
+        
+    
     
 
     def after_turn(self):
+        return create_move_action(Point(0, 1))
         """
         Gets called after executeTurn
         """
