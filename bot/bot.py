@@ -21,7 +21,6 @@ class Bot:
 
         # Write your bot here. Use functions from aiHelper to instantiate your actions.
         return create_move_action(Point(0, -1))
-      
     def after_turn(self):
         """
         Gets called after executeTurn
