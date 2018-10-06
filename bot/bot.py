@@ -28,24 +28,41 @@ class Bot:
             print("RESOURCE FOUND: " + str(resource.Position.x) + "," + str(resource.Position.y))
 
         print("HOUSE FOUND: " + str(self.PlayerInfo.HouseLocation.x) + "," + str(self.PlayerInfo.HouseLocation.y))
+        
+        
+            if self.CarryingCapacity > 1000 and self.PlayerInfo.Position.x < self.HouseLocation.Position.x:
+                    return create_move_action(Point(1, 0))
 
-        while self.PlayerInfo.Position.x != resources[0].Position.x and self.PlayerInfo.Position.y != resources[0].Position.y-1:
+            if self.CarryingCapacity > 1000 and self.PlayerInfo.Position.x < self.HouseLocation.Position.x:
+                    return create_move_action(Point(1, 0))
 
+            if self.CarryingCapacity > 1000 and self.PlayerInfo.Position.x > self.HouseLocation.Position.x:
+                    return create_move_action(Point(-1, 0))
+
+            if self.CarryingCapacity > 1000 and self.PlayerInfo.Position.y > self.HouseLocation.Position.y:
+                    return create_move_action(Point(0, 1))
+
+            if self.CarryingCapacity > 1000 and self.PlayerInfo.Position.y < self.HouseLocation.Position.y:
+                    return create_move_action(Point(0, -1))
 
             if self.PlayerInfo.Position.x < resources[0].Position.x:
-                return create_move_action(Point(1, 0))
+                    return create_move_action(Point(1, 0))
 
             if self.PlayerInfo.Position.x > resources[0].Position.x:
-                return create_move_action(Point(-1, 0))
+                    return create_move_action(Point(-1, 0))
 
-            if self.PlayerInfo.Position.y < resources[0].Position.y-1:
-                return create_move_action(Point(0, -1))
+            if self.PlayerInfo.Position.y < resources[0].Position.y - 1:
+                    return create_move_action(Point(0, -1))
 
-            if self.PlayerInfo.Position.y > resources[0].Position.y-1:
-                return create_move_action(Point(0, 1))
+            if self.PlayerInfo.Position.y > resources[0].Position.y - 1:
+                    return create_move_action(Point(0, 1))
+
+            if self.PlayerInfo.Position.y == resources[0].Position.y-1 and self.PlayerInfo.Position.x == resources[0].Position.x:
+                    return create_collect_action(Point(0, 1))
+          
             
-            
-             return create_collect_action(0,1)
+             
+             
 
             
 
