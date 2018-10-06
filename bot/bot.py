@@ -20,7 +20,7 @@ class Bot:
         """
 
         # Write your bot here. Use functions from aiHelper to instantiate your actions.
-       return create_attack_action(Point(0, 1))
+       return create_attack_action(Point(0, -1))
 
     def after_turn(self):
             """
