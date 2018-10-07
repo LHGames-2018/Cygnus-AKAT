@@ -1,4 +1,8 @@
 from helper.tile import *
+import numpy as np
+from pathfinding.core.diagonal_movement import DiagonalMovement
+from pathfinding.core.grid import Grid
+from pathfinding.finder.a_star import AStarFinder
 
 
 class GameMap:
@@ -8,6 +12,7 @@ class GameMap:
         self.wallsAreBreakable = wallsAreBreakable
         self.deserializeMap(serializedMap)
         self.initMapSize()
+        
 
     def getTileAt(self, position):
         if (position.x < self.xMin or position.x >= self.xMax or
@@ -17,6 +22,37 @@ class GameMap:
         x = position.x - self.xMin
         y = position.y - self.yMin
         return self.tiles[x][y].TileContent
+
+    
+
+
+
+    def prin(self):
+        resources = []
+        chaine = ''
+        for row in self.tiles:
+            for tile in row:
+                if tile.TileContent == TileContent.Wall:
+                    chaine += '1' 
+                elif tile.TileContent == TileContent.Player:
+                    chaine += '6'
+                elif tile.TileContent == TileContent.Resource:
+                    chaine += '4'
+                    resources.append(tile)
+                else:
+                    chaine += '1'
+                chaine+= ' '
+            chaine += ';'
+        chaine = chaine[:-1]
+        
+        matrice = np.matrix(chaine)
+        print("")
+        print(resources)
+        return resources, matrice
+
+
+
+        
 
     def initMapSize(self):
         if self.tiles is not None:
